@@ -101,6 +101,7 @@ function activeContext() {
 
 function updateCount() {
   $('selected-count').querySelector('strong').textContent = model.selection.size;
+  $('selected-count').querySelector('span').textContent = model.selection.size === 1 ? 'seleccionada' : 'seleccionadas';
   $('guardar').disabled = model.saving || !model.selection.size || (model.correction && !$('motivo').value);
   $('guardar').textContent = model.saving ? 'Guardando…' : model.correction ? 'Anular seleccionadas' : 'Guardar entregas';
 }
@@ -168,7 +169,7 @@ async function loadRoster(feedback) {
     if (version !== model.contextVersion) return;
     model.people = people;
     const marked = people.filter(person => person.marked).length;
-    $('roster-subtitle').textContent = group.name + ' · ' + people.length + ' en el listado · ' + marked + ' registradas';
+    $('roster-subtitle').textContent = group.name + ' · ' + people.length + ' en el listado · ' + marked + (marked === 1 ? ' registrada' : ' registradas');
     message('roster-state', feedback || (people.length ? '' : 'No hay personas habilitadas en el grupo.'), feedback ? 'success' : '');
     renderRoster();
   } catch (error) {
@@ -195,7 +196,7 @@ async function saveRoster() {
   try {
     const result = await api(action, model.pending);
     if (version !== model.contextVersion) return;
-    const label = correction ? 'anuladas' : 'registradas';
+    const label = correction ? (result.saved === 1 ? 'anulada' : 'anuladas') : (result.saved === 1 ? 'registrada' : 'registradas');
     const rest = result.unchanged ? ' · ' + result.unchanged + ' sin cambio' : '';
     await loadRoster(result.saved + ' ' + label + rest + (result.replayed ? ' · operación recuperada' : ''));
   } catch (error) {
