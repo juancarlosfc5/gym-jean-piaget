@@ -1,0 +1,8 @@
+{
+  "name": "gym-jean-piaget",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "engines": { "node": "24.x" },
+  "scripts": { "dev": "node dev.mjs" }
+}

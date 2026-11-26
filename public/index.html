@@ -1,0 +1,88 @@
+<!doctype html>
+<html lang="es-CO">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#f7f8ef">
+  <title>Registrar entregas · Jean Piaget</title>
+  <link rel="icon" href="/logo.png">
+  <link rel="stylesheet" href="/estilos.css">
+  <script type="module" src="/piloto.js"></script>
+</head>
+<body data-view="registro">
+  <a class="skip" href="#contenido">Ir al contenido</a>
+  <header class="site-header">
+    <div class="header-inner">
+      <a class="brand" href="/" aria-label="Alimentación Jean Piaget, inicio"><img src="/logo.png" width="120" height="53" alt="Jean Piaget Little Steps"><span>Alimentación<br><strong>Escolar</strong></span></a>
+      <nav aria-label="Principal"><a href="/" aria-current="page">Registro</a><a href="/tablero">Tablero</a></nav>
+      <button class="profile-btn" type="button" data-open-profile><span class="profile-dot"></span><span id="profile-label">Perfil de prueba</span></button>
+    </div>
+  </header>
+  <main id="contenido" class="wrap">
+    <section class="hero">
+      <div class="hero-content">
+        <p class="eyebrow"><span></span> Alimentación escolar 2027</p>
+        <h1>Registrar entregas</h1>
+        <p>Elige la jornada, el grupo y el servicio. Marca a quienes recibieron su merienda o almuerzo.</p>
+      </div>
+      <div class="hero-art" aria-hidden="true"><i></i><i></i><i></i><b>✓</b></div>
+    </section>
+    <div class="notice"><i aria-hidden="true"></i><span><strong>Piloto de prueba.</strong> Usa las personas y fechas ficticias incluidas.</span></div>
+    <div class="work-area">
+      <aside class="panel context" aria-labelledby="context-title">
+        <h2 id="context-title">Jornada y grupo</h2>
+        <div class="control"><label for="fecha">Fecha de entrega</label><select id="fecha" disabled></select></div>
+        <div class="control"><label for="grupo">Grupo</label><select id="grupo" disabled></select></div>
+        <fieldset class="services"><legend>Servicio</legend>
+          <label><input type="radio" name="servicio" value="merienda" checked disabled><span>Merienda</span></label>
+          <label><input type="radio" name="servicio" value="almuerzo" disabled><span>Almuerzo</span></label>
+        </fieldset>
+        <p class="hint" id="context-hint"></p>
+        <details id="manage" hidden>
+          <summary>Gestionar persona de prueba</summary>
+          <form id="manage-form">
+            <div class="control"><label for="person-code">Código ficticio</label><input id="person-code" inputmode="numeric" placeholder="Ej. 031" required pattern="[0-9]{3}" maxlength="3"></div>
+            <div class="control"><label for="person-status">Estado</label><select id="person-status"><option value="active">Activo</option><option value="inactive">Inactivo</option></select></div>
+            <button class="button secondary" type="submit">Guardar persona</button>
+            <p class="status" id="manage-status" role="status"></p>
+          </form>
+        </details>
+      </aside>
+      <section class="panel roster" aria-labelledby="roster-title">
+        <div class="panel-head">
+          <div><h2 id="roster-title">Personas del grupo</h2><p id="roster-subtitle" class="hint">Selecciona un perfil para cargar el listado.</p></div>
+          <button class="text-button" id="select-shown" type="button" disabled>Seleccionar visibles</button>
+        </div>
+        <div class="roster-tools">
+          <label class="search"><span class="sr-only">Buscar en el grupo</span><span aria-hidden="true">⌕</span><input id="buscar" type="search" placeholder="Buscar por nombre" disabled></label>
+          <button class="button secondary" id="toggle-correction" type="button" hidden>Corregir marcaciones</button>
+        </div>
+        <div id="correction-fields" hidden><div class="control"><label for="motivo">Motivo de la corrección</label><select id="motivo"><option value="">Selecciona un motivo</option><option>Marcación de prueba</option><option>Servicio registrado por error</option><option>Selección incorrecta</option></select></div></div>
+        <p class="status" id="roster-state" role="status">El listado se mostrará aquí.</p>
+        <ul id="lista" class="people"></ul>
+        <div class="save-bar">
+          <p id="selected-count" aria-live="polite"><strong>0</strong> seleccionadas</p>
+          <button id="guardar" class="button primary" type="button" disabled>Guardar entregas</button>
+        </div>
+      </section>
+    </div>
+  </main>
+  <footer class="site-footer wrap"><span>Gimnasio Bilingüe Jean Piaget</span><a href="/tablero">Ver tablero mensual <span aria-hidden="true">↗</span></a></footer>
+  <dialog id="profile-dialog" aria-labelledby="profile-title">
+    <form id="profile-form">
+      <h2 id="profile-title">Entrar al piloto</h2>
+      <p>Elige un perfil ficticio para probar sus permisos.</p>
+      <div class="control"><label for="perfil">Perfil</label>
+        <select id="perfil">
+          <option value="admin">Coordinación · registro y tablero</option>
+          <option value="cartera">Cartera · tablero mensual</option>
+          <option value="pre1">Operador preescolar 1</option><option value="pre2">Operador preescolar 2</option>
+          <option value="sede1">Operador sede principal 1</option><option value="sede2">Operador sede principal 2</option>
+        </select>
+      </div>
+      <p class="status" id="profile-status" role="status"></p>
+      <button class="button primary" type="submit">Entrar</button>
+    </form>
+  </dialog>
+</body>
+</html>

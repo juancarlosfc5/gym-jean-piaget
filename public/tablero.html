@@ -1,0 +1,79 @@
+<!doctype html>
+<html lang="es-CO">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#f7f8ef">
+  <title>Tablero mensual · Jean Piaget</title>
+  <link rel="icon" href="/logo.png">
+  <link rel="stylesheet" href="/estilos.css">
+  <script type="module" src="/piloto.js"></script>
+</head>
+<body data-view="tablero">
+  <a class="skip" href="#contenido">Ir al contenido</a>
+  <header class="site-header">
+    <div class="header-inner">
+      <a class="brand" href="/" aria-label="Alimentación Jean Piaget, inicio"><img src="/logo.png" width="120" height="53" alt="Jean Piaget Little Steps"><span>Alimentación<br><strong>Escolar</strong></span></a>
+      <nav aria-label="Principal"><a href="/">Registro</a><a href="/tablero" aria-current="page">Tablero</a></nav>
+      <button class="profile-btn" type="button" data-open-profile><span class="profile-dot"></span><span id="profile-label">Perfil de prueba</span></button>
+    </div>
+  </header>
+  <main id="contenido" class="wrap">
+    <section class="hero dashboard-hero">
+      <div class="hero-content">
+        <p class="eyebrow"><span></span> Alimentación escolar 2027</p>
+        <h1>Tablero mensual</h1>
+        <p>Consulta a quiénes se atendió y cuántas meriendas y almuerzos recibió cada persona.</p>
+      </div>
+      <div class="hero-art" aria-hidden="true"><i></i><i></i><i></i><b>↗</b></div>
+    </section>
+    <div class="notice"><i aria-hidden="true"></i><span><strong>Piloto de prueba.</strong> Los indicadores se calculan con los registros ficticios de Google Sheets.</span></div>
+    <section class="panel filters" aria-labelledby="filters-title">
+      <div class="panel-head"><h2 id="filters-title">Filtros del tablero</h2><button class="text-button" id="reset" type="button" disabled>Limpiar filtros</button></div>
+      <div class="filter-grid">
+        <div class="control"><label for="mes">Mes</label><select id="mes" disabled></select></div>
+        <div class="control"><label for="sede">Sede</label><select id="sede" disabled></select></div>
+        <div class="control"><label for="grado">Grado</label><select id="grado" disabled></select></div>
+        <div class="control"><label for="grupo-filtro">Grupo</label><select id="grupo-filtro" disabled></select></div>
+        <div class="control"><label for="servicio-filtro">Servicio</label><select id="servicio-filtro" disabled><option value="">Todos</option><option value="merienda">Merienda</option><option value="almuerzo">Almuerzo</option></select></div>
+      </div>
+      <p class="status" id="report-status" role="status"></p>
+    </section>
+    <div class="metrics" aria-label="Totales del mes">
+      <article class="metric green"><span>Personas atendidas</span><strong id="metrica-personas">—</strong><small>Personas distintas</small></article>
+      <article class="metric blue"><span>Meriendas</span><strong id="metrica-meriendas">—</strong><small>Entregas efectivas</small></article>
+      <article class="metric pink"><span>Almuerzos</span><strong id="metrica-almuerzos">—</strong><small>Entregas efectivas</small></article>
+    </div>
+    <section class="panel trend" aria-labelledby="trend-title">
+      <div class="panel-head"><h2 id="trend-title">Entregas por día</h2><div class="legend"><span>Meriendas</span><span>Almuerzos</span></div></div>
+      <div id="grafica" class="chart" aria-label="Gráfico de entregas diarias"></div>
+    </section>
+    <section class="panel detail" aria-labelledby="detail-title">
+      <div class="panel-head"><div><h2 id="detail-title">Detalle por persona</h2><p class="hint" id="detail-count"></p></div><button type="button" class="button secondary" id="exportar" disabled>Descargar CSV</button></div>
+      <label class="search"><span class="sr-only">Buscar persona</span><span aria-hidden="true">⌕</span><input id="buscar-tablero" type="search" placeholder="Buscar por nombre" disabled></label>
+      <div class="table-wrap"><table>
+        <caption class="sr-only">Servicios reportados por persona y grupo</caption>
+        <thead><tr><th scope="col">Persona</th><th scope="col">Grupo</th><th scope="col">Meriendas</th><th scope="col">Almuerzos</th><th scope="col">Total</th></tr></thead>
+        <tbody id="tabla"></tbody>
+      </table></div>
+    </section>
+  </main>
+  <footer class="site-footer wrap"><span>Gimnasio Bilingüe Jean Piaget</span><a href="/">Volver al registro <span aria-hidden="true">↗</span></a></footer>
+  <dialog id="profile-dialog" aria-labelledby="profile-title">
+    <form id="profile-form">
+      <h2 id="profile-title">Entrar al piloto</h2>
+      <p>Elige un perfil ficticio para probar sus permisos.</p>
+      <div class="control"><label for="perfil">Perfil</label>
+        <select id="perfil">
+          <option value="cartera">Cartera · tablero mensual</option>
+          <option value="admin">Coordinación · registro y tablero</option>
+          <option value="pre1">Operador preescolar 1</option><option value="pre2">Operador preescolar 2</option>
+          <option value="sede1">Operador sede principal 1</option><option value="sede2">Operador sede principal 2</option>
+        </select>
+      </div>
+      <p class="status" id="profile-status" role="status"></p>
+      <button class="button primary" type="submit">Entrar</button>
+    </form>
+  </dialog>
+</body>
+</html>

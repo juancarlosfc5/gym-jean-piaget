@@ -1,0 +1,13 @@
+{
+  "framework": null,
+  "outputDirectory": "public",
+  "cleanUrls": true,
+  "functions": { "api/piloto.js": { "maxDuration": 45 } },
+  "headers": [
+    { "source": "/(.*)", "headers": [
+      { "key": "X-Content-Type-Options", "value": "nosniff" },
+      { "key": "Referrer-Policy", "value": "same-origin" },
+      { "key": "Content-Security-Policy", "value": "default-src 'self'; script-src 'self'; style-src 'self' 'unsafe-inline'; img-src 'self'; connect-src 'self'; object-src 'none'; base-uri 'self'; frame-ancestors 'none'; form-action 'self'" }
+    ] }
+  ]
+}
